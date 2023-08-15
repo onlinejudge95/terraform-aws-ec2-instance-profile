@@ -1,0 +1,26 @@
+name: "MR Pipeline"
+
+on:
+  pull_request:
+
+jobs:
+  ci:
+    name: "CI Job"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+      - name: Initialize
+        run: terraform init
+      - name: Linting
+        run: terraform fmt -check
+      - name: Validation
+        run: terraform validate -json

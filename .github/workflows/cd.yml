@@ -18,4 +18,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Upload to S3
-        run: aws s3 sync . s3://instance-user-data/terraform-modules/terraform-aws-ec2-isntance-profile
+        run: |
+          aws s3 cp main.tf . s3://instance-user-data/terraform-modules/terraform-aws-ec2-isntance-profile
+          aws s3 cp outputs.tf . s3://instance-user-data/terraform-modules/terraform-aws-ec2-isntance-profile
+          aws s3 cp variables.tf . s3://instance-user-data/terraform-modules/terraform-aws-ec2-isntance-profile
+          aws s3 cp LICENSE . s3://instance-user-data/terraform-modules/terraform-aws-ec2-isntance-profile

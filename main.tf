@@ -1,7 +1,3 @@
-terraform {
-  required_version = ">=0.11.0"
-}
-
 resource "aws_iam_instance_profile" "main" {
   name = "${var.name}Profile"
   path = var.path

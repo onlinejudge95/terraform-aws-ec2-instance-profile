@@ -5,13 +5,13 @@ variable "name" {
 
 variable "policy_jsons" {
   description = "Valid JSON policies for the role"
-  type        = list(any)
+  type        = list(string)
   default     = []
 }
 
 variable "policy_arns" {
   description = "ARNs of IAM policies for the role"
-  type        = list(any)
+  type        = list(string)
   default     = []
 }
 
@@ -35,6 +35,6 @@ variable "path" {
 
 variable "tags" {
   description = "Tags that should be assigned to the created resources whenever possible"
-  type        = map(any)
+  type        = map(string)
   default     = {}
 }
